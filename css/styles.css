@@ -1,0 +1,20 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #969696;
+}
+
+.panel {
+  width: 600px;
+}
+
+#answer4 {
+  display: none;
+}
+
+button {
+  margin-top: 30px;
+}
+
+#suggestion {
+  display: none;
+}
