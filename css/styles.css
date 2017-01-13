@@ -26,3 +26,15 @@ button {
 #suggestion {
   display: none;
 }
+
+a {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: #666768;
+}

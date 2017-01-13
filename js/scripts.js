@@ -8,43 +8,43 @@ var firstQuestion = true;
 
 var questions = {
   question1: {
-    text: "Q1",
-    answer1: "C# question 1",
-    answer2: "Rails question 1",
-    answer3: "Android question 1",
-    answer4: "Design question 1",
+    text: "What kinds of books do you prefer?",
+    answer1: "Text books and technical manuals",
+    answer2: "Do it yourself books",
+    answer3: "Anything small, fun, and accesible",
+    answer4: "Whatever is most visually appealing",
     nextQuestion: "question2"
   },
   question2: {
-    text: "Q2",
-    answer1: "C# question 2",
-    answer2: "Rails question 2",
-    answer3: "Android question 2",
-    answer4: "Design question 2",
+    text: "What's your ideal working environment?",
+    answer1: "A big corporate office",
+    answer2: "A small office space",
+    answer3: "Home office",
+    answer4: "Artist's studio",
     nextQuestion: "question3"
   },
   question3: {
-    text: "Q3",
-    answer1: "C# question 3",
-    answer2: "Rails question 3",
-    answer3: "Android question 3",
-    answer4: "Design question 3",
+    text: "What colors do you prefer?",
+    answer1: "Black and white",
+    answer2: "Red, red, red!",
+    answer3: "Greeeeeen",
+    answer4: "All colors are great, provided they're used correctly",
     nextQuestion: "question4"
   },
   question4: {
-    text: "Q4",
-    answer1: "C# question 4",
-    answer2: "Rails question 4",
-    answer3: "Android question 4",
-    answer4: "Design question 4",
+    text: "How do you know you've created something great?",
+    answer1: "No one even knows it's there because it works so perfectly",
+    answer2: "It's functional with minimal time commitment",
+    answer3: "Everyone wants to play with it",
+    answer4: "Beauty is in the eye of the beholder; what does great really mean anyway?",
     nextQuestion: "question5"
   },
   question5: {
-    text: "Q5",
-    answer1: "C# question 5",
-    answer2: "Rails question 5",
-    answer3: "Android question 5",
-    answer4: "Design question 5",
+    text: "Which company sounds the coolest?",
+    answer1: "See Sharp: Tactical Eyewear",
+    answer2: "Rubies on Rails: Gemstone Shipping and Logistics",
+    answer3: "And Roid: Personal Trainers",
+    answer4: "D-Zine: We were a zine before e-zines",
     nextQuestion: "suggestion"
   },
   suggestion: {
@@ -97,10 +97,10 @@ function giveSuggestion() {
   var totals = checkTotals();
 
   if (Array.isArray(totals)) {
-    var response = "It sounds like you should take our " + questions.suggestion[totals[0]] + " track, or our " + questions.suggestion[totals[1]] + " track!";
+    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like you should take our " + questions.suggestion[totals[0]] + " track, or our " + questions.suggestion[totals[1]] + " track!</a>";
     return response;
   } else {
-    var response = "It sounds like should take our " + questions.suggestion[totals] + " track!";
+    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like should take our " + questions.suggestion[totals] + " track!</a>";
     return response;
   }
 }
@@ -117,7 +117,16 @@ $(function() {
     $("#answerText2").text(question.answer2);
     $("#answerText3").text(question.answer3);
     $("#answerText4").text(question.answer4);
+    $("input:radio[name=answer]:checked").removeAttr("checked");
   }
+
+  function unCheck() {
+    $("input:radio[name=answer]:checked")[0].checked = false;
+  }
+
+  $("input:radio").click(function() {
+    $("button[type=submit]").removeAttr("disabled");
+  });
 
   $("form").submit(function(event) {
     var answer = $("input:radio[name=answer]:checked").val();
@@ -132,6 +141,8 @@ $(function() {
       $("#answer4").show();
       nextQuestion = "question2";
       firstQuestion = false;
+      unCheck();
+      $("button[type=submit]").attr("disabled", "disabled");
     } else if (nextQuestion === "suggestion") {
       updateTotals(answer);
 
@@ -147,6 +158,8 @@ $(function() {
       updateTotals(answer);
       populateFields(nextQuestion);
       nextQuestion = questions[nextQuestion].nextQuestion;
+      unCheck();
+      $("button[type=submit]").attr("disabled", "disabled");
     }
 
     event.preventDefault();
