@@ -48,10 +48,10 @@ var questions = {
     nextQuestion: "suggestion"
   },
   suggestion: {
-    cSharp: "It sounds like you should check out our C# track!",
-    rails: "It sounds like you should check out our Ruby on Rails track!",
-    android: "It sounds like you should check out our Java/Android track!",
-    design: "It sounds like you should check out our Design track!"
+    cSharp: "C#",
+    rails: "Ruby on Rails",
+    android: "Java/Android",
+    design: "Design"
   }
 }
 
@@ -74,21 +74,22 @@ function checkTotals() {
   var maxIndex = 0;
   var maxArray = [0];
 
-  for (var i = 1; i < totals.length; i++) {
-    if (totals[i] > max) {
+  for (i = 1; i < totals.length; i++) {
+
+    if (totals[i] === max) {
+      maxIndex = i;
+      maxArray.push(maxIndex);
+    } else if (totals[i] > max) {
       max = totals[i];
       maxIndex = i;
       maxArray = [maxIndex];
-    } else if (totals[i] === max) {
-      maxIndex = i;
-      maxArray.append(maxIndex);
     }
+  }
 
-    if (maxArray.length === 2) {
-      suggestionsArray = [choices[maxArray[0]], choices[maxArray[1]]];
-    } else {
-      return choices[maxArray[0]];
-    }
+  if (maxArray.length === 2) {
+    return suggestionsArray = [choices[maxArray[0]], choices[maxArray[1]]];
+  } else {
+    return choices[maxArray[0]];
   }
 }
 
@@ -96,10 +97,11 @@ function giveSuggestion() {
   var totals = checkTotals();
 
   if (Array.isArray(totals)) {
-    console.log("is array");
-    debugger;
+    var response = "It sounds like you should take our " + questions.suggestion[totals[0]] + " track, or our " + questions.suggestion[totals[1]] + " track!";
+    return response;
   } else {
-    return questions.suggestion[totals];
+    var response = "It sounds like should take our " + questions.suggestion[totals] + " track!";
+    return response;
   }
 }
 

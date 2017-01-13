@@ -3,6 +3,10 @@ body {
   background-color: #969696;
 }
 
+h1, h2 {
+  color: white;
+}
+
 .panel {
   width: 600px;
 }
