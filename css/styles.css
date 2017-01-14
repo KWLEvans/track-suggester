@@ -9,6 +9,18 @@ h1, h2 {
 
 .panel {
   width: 600px;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.panel>.panel-heading {
+  background-color: #00b3b4;
+  margin: -1px;
+  color: white;
+}
+
+.panel>.panel-body {
+  color: #747c83;
 }
 
 #answer4 {
@@ -37,4 +49,67 @@ a:visited {
 
 a:hover {
   color: #666768;
+}
+
+ul.navbar {
+  height: 100px;
+  width: 100vw;
+}
+
+.navbar li {
+  float: right;
+  margin: 30px 20px 0px 30px;
+  font-size: 1.3em;
+  list-style: none;
+  letter-spacing: 4px;
+}
+
+.navbar img {
+  height: 90px;
+  float: left;
+}
+
+#apply {
+  background-color: #00b3b4;
+  padding: 10px 25px;
+  margin-top: 20px;
+  border-radius: 5px;
+}
+
+#apply a {
+  color: white;
+}
+
+.navbar-fixed-bottom {
+  background-color: white;
+  width: 100vw;
+  height: 50px;
+  border-top: 4px solid #00b3b4;
+}
+
+@media screen and (max-width: 882px) {
+
+  div.navbar {
+    height: 450px;
+  }
+
+  ul.navbar {
+    padding-left: 0px;
+  }
+
+  ul.navbar li {
+    float: none;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100vw;
+    margin-left: 0px;
+  }
+
+  .navbar li {
+    clear: both;
+  }
+
+  div.panel {
+    width: 400px;
+  }
 }

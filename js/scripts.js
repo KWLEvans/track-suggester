@@ -97,10 +97,10 @@ function giveSuggestion() {
   var totals = checkTotals();
 
   if (Array.isArray(totals)) {
-    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like you should take our " + questions.suggestion[totals[0]] + " track, or our " + questions.suggestion[totals[1]] + " track!</a>";
+    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like you should check out our " + questions.suggestion[totals[0]] + " track, or our " + questions.suggestion[totals[1]] + " track here!</a>";
     return response;
   } else {
-    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like should take our " + questions.suggestion[totals] + " track!</a>";
+    var response = "<a href=\"https://www.epicodus.com/portland/\">It sounds like should check out our " + questions.suggestion[totals] + " track here!</a>";
     return response;
   }
 }
